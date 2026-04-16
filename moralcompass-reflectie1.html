@@ -538,8 +538,11 @@
     <p class="subtitle">Laat je gegevens achter en ontvang de link naar Module 2 in je mailbox. Geen spam — alleen jouw volgende stap.</p>
 
     <!-- Netlify Forms: name="module1-completion" zorgt voor automatische registratie -->
-    <form action="https://formspree.io/f/xnjlpagy" method="POST" onsubmit="handleSubmit(event)">
+    <form name="module1-completion" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
+      <input type="hidden" name="form-name" value="module1-completion">
+      <input type="hidden" name="module" value="Module 1 – Wie ben ik eigenlijk?">
       <!-- Honeypot voor spam -->
+      <p style="display:none"><input name="bot-field"></p>
 
       <div class="form-row">
         <div class="form-group">
@@ -607,10 +610,10 @@
     const form = e.target;
     const data = new FormData(form);
 
-    fetch('https://formspree.io/f/xnjlpagy', {
+    fetch('/', {
       method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: data
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(data).toString()
     })
     .then(() => {
       form.parentElement.style.display = 'none';

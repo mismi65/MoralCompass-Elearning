@@ -238,10 +238,7 @@
     <h2>Goed gedaan! 💛</h2>
     <p class="subtitle">Laat je gegevens achter en ontvang de link naar Module 4 in je mailbox. Geen spam — alleen jouw volgende stap.</p>
 
-    <form name="module3-completion" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
-      <input type="hidden" name="form-name" value="module3-completion">
-      <input type="hidden" name="module" value="Module 3 – Verbinding met jezelf">
-      <p style="display:none"><input name="bot-field"></p>
+    <form action="https://formspree.io/f/mjgjybjq" method="POST" onsubmit="handleSubmit(event)">
 
       <div class="form-row">
         <div class="form-group">
@@ -307,10 +304,10 @@
     const form = e.target;
     const data = new FormData(form);
 
-    fetch('/', {
+    fetch('https://formspree.io/f/mjgjybjq', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(data).toString()
+      headers: { 'Accept': 'application/json' },
+      body: data
     })
     .then(() => {
       form.parentElement.style.display = 'none';

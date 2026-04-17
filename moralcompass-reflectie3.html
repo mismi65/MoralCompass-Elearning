@@ -200,7 +200,7 @@
       <p>"Op welke momenten in mijn dag voel ik me het meest verbonden met mezelf — en wanneer verlies ik die verbinding?"</p>
     </div>
     <div class="highlight-box" style="font-family: 'DM Sans', sans-serif; font-size: 14px; font-style: normal; color: var(--accent);">
-      ✉️ Wil je je antwoorden bespreken met een coach? Stuur een mail naar <a href="mailto:info@moralcompass.nl" style="color: var(--gold); font-weight: 500;">info@moralcompass.nl</a>
+      ✉️ Wil je je antwoorden bespreken met een coach? Stuur een mail naar <a href="mailto:mike.smit@ziggo.nl" style="color: var(--gold); font-weight: 500;">mike.smit@ziggo.nl</a>
     </div>
   </div>
 </div>
@@ -238,10 +238,8 @@
     <h2>Goed gedaan! 💛</h2>
     <p class="subtitle">Laat je gegevens achter en ontvang de link naar Module 4 in je mailbox. Geen spam — alleen jouw volgende stap.</p>
 
-    <form name="module3-completion" method="POST" data-netlify="true" netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
-      <input type="hidden" name="form-name" value="module3-completion">
+    <form action="https://formspree.io/f/mjgjybjq" method="POST" onsubmit="handleSubmit(event)">
       <input type="hidden" name="module" value="Module 3 – Verbinding met jezelf">
-      <p style="display:none"><input name="bot-field"></p>
 
       <div class="form-row">
         <div class="form-group">
@@ -263,7 +261,7 @@
 
     <div class="divider">of</div>
 
-    <a href="mailto:info@moralcompass.nl?subject=Coachingsgesprek aanvragen&body=Hallo Mike,%0A%0AIk heb Module 3 afgerond en wil graag een coachingsgesprek inplannen.%0A%0AMijn naam:%0ATelefoonnummer:%0A%0AGroeten" class="btn-coaching">
+    <a href="mailto:mike.smit@ziggo.nl?subject=Coachingsgesprek aanvragen&body=Hallo Mike,%0A%0AIk heb Module 3 afgerond en wil graag een coachingsgesprek inplannen.%0A%0AMijn naam:%0ATelefoonnummer:%0A%0AGroeten" class="btn-coaching">
       📅 Boek een coachingsgesprek
     </a>
   </div>
@@ -272,7 +270,7 @@
     <span class="big-icon">💌</span>
     <h2>Je bent aangemeld!</h2>
     <p>Dank je wel. Je ontvangt zo snel mogelijk een e-mail met de link naar Module 4.</p>
-    <p>Wil je in de tussentijd dieper ingaan op wat je hebt ontdekt? Stuur een berichtje naar <a href="mailto:info@moralcompass.nl">info@moralcompass.nl</a> — Mike helpt je graag verder.</p>
+    <p>Wil je in de tussentijd dieper ingaan op wat je hebt ontdekt? Stuur een berichtje naar <a href="mailto:mike.smit@ziggo.nl">mike.smit@ziggo.nl</a> — Mike helpt je graag verder.</p>
   </div>
 </div>
 
@@ -307,18 +305,22 @@
     const form = e.target;
     const data = new FormData(form);
 
-    fetch('/', {
+    fetch('https://formspree.io/f/mjgjybjq', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(data).toString()
+      headers: { 'Accept': 'application/json' },
+      body: data
     })
-    .then(() => {
-      form.parentElement.style.display = 'none';
-      document.getElementById('thankyouCard').classList.add('visible');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    .then(response => {
+      if (response.ok) {
+        form.parentElement.style.display = 'none';
+        document.getElementById('thankyouCard').classList.add('visible');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        alert('Er ging iets mis. Probeer het opnieuw of stuur een mail naar mike.smit@ziggo.nl');
+      }
     })
     .catch(() => {
-      alert('Er ging iets mis. Probeer het opnieuw of stuur een mail naar info@moralcompass.nl');
+      alert('Er ging iets mis. Probeer het opnieuw of stuur een mail naar mike.smit@ziggo.nl');
     });
   }
 

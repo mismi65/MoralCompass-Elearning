@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ontwaken naar Jezelf — MoralCompass E-learning</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #F7F2EA;
+    --sand: #E8DDD0;
+    --warm: #C8A882;
+    --gold: #A07848;
+    --deep: #2C2018;
+    --muted: #7A6A58;
+    --accent: #8B5E3C;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--deep);
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+  }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 24px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(200,168,130,0.18) 0%, transparent 70%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(160,120,72,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .hero-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 24px;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 9vw, 86px);
+    font-weight: 300;
+    line-height: 1.05;
+    color: var(--deep);
+    margin-bottom: 12px;
+    animation: fadeUp 0.8s ease 0.1s both;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 3vw, 24px);
+    font-weight: 300;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 48px;
+    max-width: 560px;
+    line-height: 1.5;
+    animation: fadeUp 0.8s ease 0.2s both;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 36px;
+    background: linear-gradient(135deg, var(--accent), var(--gold));
+    color: white;
+    border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: 0 8px 28px rgba(160,120,72,0.35);
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    animation: fadeUp 0.8s ease 0.3s both;
+  }
+
+  .hero-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 36px rgba(160,120,72,0.45);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--warm);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    animation: fadeUp 0.8s ease 0.5s both;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--warm), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.1); }
+  }
+
+  /* INTRO */
+  .intro {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 80px 24px;
+    text-align: center;
+  }
+
+  .intro p {
+    font-size: clamp(16px, 2.5vw, 19px);
+    line-height: 1.85;
+    color: #4A3A2A;
+    margin-bottom: 16px;
+  }
+
+  .intro .quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 3vw, 26px);
+    font-style: italic;
+    color: var(--accent);
+    border-left: 3px solid var(--warm);
+    padding: 16px 24px;
+    margin: 32px 0;
+    text-align: left;
+    background: linear-gradient(135deg, #FDF6ED, #F5EAD8);
+    border-radius: 0 12px 12px 0;
+    line-height: 1.5;
+  }
+
+  /* MODULES */
+  .modules-section {
+    padding: 80px 24px;
+    background: white;
+  }
+
+  .section-label {
+    text-align: center;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--warm);
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    text-align: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 5vw, 42px);
+    font-weight: 300;
+    color: var(--deep);
+    margin-bottom: 56px;
+    line-height: 1.2;
+  }
+
+  .section-title em { font-style: italic; color: var(--accent); }
+
+  .modules-list {
+    max-width: 680px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .module-item {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--sand);
+    position: relative;
+  }
+
+  .module-item:last-child { border-bottom: none; }
+
+  .module-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--sand);
+    line-height: 1;
+    min-width: 52px;
+    flex-shrink: 0;
+    margin-top: -4px;
+  }
+
+  .module-content { flex: 1; }
+
+  .module-content .module-icon {
+    font-size: 22px;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  .module-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--deep);
+    margin-bottom: 6px;
+  }
+
+  .module-content p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+
+  /* FOR WHO */
+  .forwho {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 80px 24px;
+  }
+
+  .forwho-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .forwho-item {
+    background: linear-gradient(135deg, #FDF6ED, #F5EAD8);
+    border-radius: 14px;
+    padding: 22px 20px;
+    border: 1px solid rgba(200,168,130,0.2);
+  }
+
+  .forwho-item .icon { font-size: 24px; margin-bottom: 10px; display: block; }
+
+  .forwho-item p {
+    font-size: 14px;
+    line-height: 1.65;
+    color: #4A3A2A;
+  }
+
+  /* CTA BOTTOM */
+  .cta-bottom {
+    background: linear-gradient(135deg, #2C2018, #4A3020);
+    padding: 80px 24px;
+    text-align: center;
+    color: white;
+  }
+
+  .cta-bottom h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 300;
+    color: var(--sand);
+    margin-bottom: 16px;
+    line-height: 1.2;
+  }
+
+  .cta-bottom h2 em { font-style: italic; color: var(--warm); }
+
+  .cta-bottom p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 40px;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.7;
+  }
+
+  .cta-bottom .btn-start {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 40px;
+    background: linear-gradient(135deg, var(--accent), var(--gold));
+    color: white;
+    border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: 0 8px 28px rgba(160,120,72,0.4);
+    transition: all 0.3s;
+  }
+
+  .cta-bottom .btn-start:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 36px rgba(160,120,72,0.5);
+  }
+
+  .cta-bottom .note {
+    margin-top: 20px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.05em;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 12px;
+    color: var(--muted);
+    border-top: 1px solid var(--sand);
+  }
+
+  .footer a { color: var(--warm); text-decoration: none; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 480px) {
+    .forwho-grid { grid-template-columns: 1fr; }
+    .module-num { font-size: 36px; min-width: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-label">MoralCompass · E-learning</span>
+  <h1 class="hero-title">Ontwaken naar<br><em>Jezelf</em></h1>
+  <p class="hero-subtitle">Een reis van vijf stappen naar meer zelfkennis, rust en richting in je leven.</p>
+  <a href="https://moralcompass-elearning.pages.dev/moralcompass-reflectie1" class="hero-cta">
+    ✨ Start jouw reis
+  </a>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>ontdek meer</span>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro reveal">
+  <p>We leven in een wereld vol snelheid, lawaai en verwachtingen. We doen, presteren en reageren — maar vergeten daarbij de verbinding met onszelf.</p>
+  <p>Deze gratis e-learning is een uitnodiging om even stil te staan. Om te ontdekken wie je bent, wat je drijft, en hoe je meer vanuit je kern kunt leven.</p>
+  <div class="quote">
+    "De mooiste reis die je ooit zult maken, is de reis naar binnen."
+  </div>
+  <p>Vijf modules. Op jouw tempo. Geen theorie zonder oefening — alleen echte reflectie, concrete tools en kleine stappen met grote impact.</p>
+</section>
+
+<!-- MODULES -->
+<section class="modules-section">
+  <div class="reveal">
+    <p class="section-label">Het programma</p>
+    <h2 class="section-title">Vijf stappen naar<br><em>jouw kern</em></h2>
+  </div>
+
+  <div class="modules-list">
+    <div class="module-item reveal">
+      <span class="module-num">1</span>
+      <div class="module-content">
+        <span class="module-icon">🌅</span>
+        <h3>Wie ben ik eigenlijk?</h3>
+        <p>De meeste mensen stellen deze vraag nooit écht. Jij wel. Maak kennis met het concept van zelfbewustzijn en zet je eerste stap naar binnen.</p>
+      </div>
+    </div>
+    <div class="module-item reveal">
+      <span class="module-num">2</span>
+      <div class="module-content">
+        <span class="module-icon">🤖</span>
+        <h3>Leven op de automatische piloot</h3>
+        <p>95% van ons gedrag verloopt automatisch. Ontdek waar jouw patronen vandaan komen — en hoe je ze kunt doorzien.</p>
+      </div>
+    </div>
+    <div class="module-item reveal">
+      <span class="module-num">3</span>
+      <div class="module-content">
+        <span class="module-icon">🌊</span>
+        <h3>Verbinding met jezelf</h3>
+        <p>Maak kennis met drie praktische tools: ademwerk, journaling en stille momenten. Eenvoudig, krachtig, voor iedereen toegankelijk.</p>
+      </div>
+    </div>
+    <div class="module-item reveal">
+      <span class="module-num">4</span>
+      <div class="module-content">
+        <span class="module-icon">🧭</span>
+        <h3>Je innerlijke kompas</h3>
+        <p>Leer het verschil tussen angst en intuïtie. Ontdek je diepste waarden en leer ze als anker te gebruiken in je dagelijks leven.</p>
+      </div>
+    </div>
+    <div class="module-item reveal">
+      <span class="module-num">5</span>
+      <div class="module-content">
+        <span class="module-icon">🌿</span>
+        <h3>De reis verder</h3>
+        <p>Dit is geen eindpunt — het is een opening. Ontdek hoe je de inzichten van deze reis meeneemt in je dagelijks leven.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOR WHO -->
+<section class="forwho reveal">
+  <p class="section-label">Voor wie</p>
+  <h2 class="section-title">Deze reis is voor jou <em>als...</em></h2>
+  <div class="forwho-grid">
+    <div class="forwho-item reveal">
+      <span class="icon">🔍</span>
+      <p>Je het gevoel hebt dat je leven meer op de automatische piloot dan bewust verloopt.</p>
+    </div>
+    <div class="forwho-item reveal">
+      <span class="icon">💭</span>
+      <p>Je meer rust en helderheid wilt in je hoofd — en meer verbinding met jezelf.</p>
+    </div>
+    <div class="forwho-item reveal">
+      <span class="icon">🌱</span>
+      <p>Je wilt groeien als mens, maar niet weet waar te beginnen.</p>
+    </div>
+    <div class="forwho-item reveal">
+      <span class="icon">🧭</span>
+      <p>Je op zoek bent naar richting — en die richting wilt vinden in jezelf.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BOTTOM -->
+<section class="cta-bottom">
+  <h2>Klaar om te <em>beginnen</em>?</h2>
+  <p>Vijf modules. Gratis. Op jouw tempo. Alles wat je nodig hebt is een pen, papier en de bereidheid om eerlijk naar jezelf te kijken.</p>
+  <a href="https://moralcompass-elearning.pages.dev/moralcompass-reflectie1" class="btn-start">
+    ✨ Start Module 1 — gratis
+  </a>
+  <p class="note">Geen account nodig · Geen spam · Alleen jouw volgende stap</p>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>© 2025 MoralCompass · <a href="https://www.moralcompass.nl">www.moralcompass.nl</a> · <a href="mailto:info@moralcompass.nl">info@moralcompass.nl</a></p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

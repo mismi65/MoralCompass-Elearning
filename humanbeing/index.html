@@ -28,14 +28,27 @@
     line-height: 1.6;
   }
 
+  /* ===== LOGO HEADER ===== */
+  .site-header {
+    text-align: center;
+    padding: 28px 24px 0;
+    animation: fadeUp 1s ease both;
+  }
+
+  .site-header img {
+    height: 72px;
+    width: auto;
+    display: inline-block;
+  }
+
   /* ===== SECTIE 1: De vraag ===== */
   .opening {
-    min-height: 92vh;
+    min-height: 86vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 60px 24px;
+    padding: 40px 24px 60px;
     position: relative;
     text-align: center;
   }
@@ -138,38 +151,6 @@
     font-size: clamp(20px, 2.8vw, 24px);
     font-weight: 400;
     line-height: 1.5;
-  }
-
-  .intro .signature {
-    margin-top: 44px;
-    text-align: right;
-    line-height: 1.5;
-  }
-
-  .intro .signature .name {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 20px;
-    color: var(--deep);
-    display: block;
-    margin-bottom: 4px;
-  }
-
-  .intro .signature .contact {
-    font-size: 13px;
-    color: var(--muted);
-  }
-
-  .intro .signature .contact a {
-    color: var(--accent);
-    text-decoration: none;
-    border-bottom: 1px dotted rgba(139,94,60,0.3);
-    transition: border-color 0.2s, color 0.2s;
-  }
-
-  .intro .signature .contact a:hover {
-    color: var(--gold);
-    border-bottom-color: var(--gold);
   }
 
   /* ===== SECTIE 3: Het beeld ===== */
@@ -431,6 +412,7 @@
     .opening { min-height: 88vh; }
     .opening-question { font-size: clamp(28px, 8vw, 42px); }
     .pairs-grid { gap: 4px 12px; }
+    .site-header img { height: 56px; }
   }
 </style>
 <!-- Google tag (gtag.js) -->
@@ -443,6 +425,13 @@
 </script>
 </head>
 <body>
+
+<!-- LOGO HEADER -->
+<header class="site-header">
+  <a href="https://www.moralcompass.nl">
+    <img src="../logo_new_8mei26.png" alt="MoralCompass">
+  </a>
+</header>
 
 <!-- 1. DE VRAAG -->
 <section class="opening">
@@ -494,11 +483,6 @@ De kunst is om het op te merken.</div>
 maar omdat iets in jou zich herinnert wie je altijd al was.</div>
 
   <div class="stanza accent">En jij — herken jij die twee bewegingen in je eigen leven?</div>
-
-  <p class="signature">
-    <span class="name">— Mike</span>
-    <span class="contact"><a href="mailto:info@moralcompass.nl">info@moralcompass.nl</a></span>
-  </p>
 </section>
 
 <!-- 3. HET BEELD -->
